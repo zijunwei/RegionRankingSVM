@@ -1,6 +1,35 @@
-## RRSVM_pytorch: An End-to-End Implementation of Zwei, MHoai@CVPR16
+## RRSVM_pytorch: An End-to-End PyTorch Implementation of Region Ranking SVM
 
-Currently tested and worked on bigmind. 
+This is the combined repository implementing the following two papers:
+
+1. **Region Ranking SVM for Image Classification** (CVPR 2016) — Z. Wei, M. Hoai.
+   [paper](https://openaccess.thecvf.com/content_cvpr_2016/papers/Wei_Region_Ranking_SVM_CVPR_2016_paper.pdf)
+2. **Improving Human Action Recognition by Non-action Classification** (NeurIPS 2016).
+   [paper](https://proceedings.neurips.cc/paper_files/paper/2016/file/a0e2a2c563d57df27213ede1ac4ac780-Paper.pdf)
+
+## TODO
+
+- [ ] **Migrate environment management to [uv](https://docs.astral.sh/uv/)**
+  so the project is easy to set up and run on a fresh machine.
+  - [ ] Add `pyproject.toml` with pinned dependencies (PyTorch, torchvision, numpy, etc.).
+  - [ ] Generate and commit a `uv.lock` for reproducible installs.
+  - [ ] Replace the legacy Python 2.7 instructions below with a `uv sync` / `uv run` workflow.
+- [ ] **Modernize the codebase to Python 3 and current PyTorch**
+  - [ ] Port `RRSVM` and `SoftMaxRRSVM` C/CUDA extensions from the old
+    `torch.utils.ffi` build (`build_RRSVM.py`, `build_SoftMaxRRSVM.py`) to
+    the current `torch.utils.cpp_extension` API.
+  - [ ] Update `Mnist_main.py` and other training scripts to Python 3 syntax.
+- [ ] **Merge the two papers' code paths into a single, unified project**
+  - [ ] Consolidate the CVPR 2016 (Region Ranking SVM) training/eval code.
+  - [ ] Consolidate the NeurIPS 2016 (non-action classification / HICO / MPII) code
+    under a shared module layout.
+  - [ ] Shared data loaders, checkpoint format, and config system across both papers.
+- [ ] **Reproducibility**
+  - [ ] Document dataset download/preparation steps for MNIST, CIFAR-10, HICO, MPII.
+  - [ ] Provide example `uv run` commands to reproduce the main results of each paper.
+- [ ] **CI / sanity checks**
+  - [ ] Add a smoke test that builds the extensions and runs a minimal forward/backward pass.
+
 ###  Description
 The modules of **RRSVM** and **SoftMaxRRSVM** are implemented in the **RRSVM** directory.
 
@@ -12,7 +41,7 @@ For each of the module, there are two implementations: the CPU version and the G
 
 
 
-### How to start:
+### How to start (legacy — pending uv migration, see TODO above):
 1.  Download pytorch with python 2.7 and GPU support
 2.  Compile the RRSVM module and SoftMaxRRSVM module by:
 	```
