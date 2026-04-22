@@ -7,6 +7,16 @@ This is the combined repository implementing the following two papers:
 2. **Improving Human Action Recognition by Non-action Classification** (NeurIPS 2016).
    [paper](https://proceedings.neurips.cc/paper_files/paper/2016/file/a0e2a2c563d57df27213ede1ac4ac780-Paper.pdf)
 
+## Related Repositories
+
+- [`zijunwei/SDR`](https://github.com/zijunwei/SDR) *(private)* — original MATLAB
+  implementation of RRSVM (CVPR 2016) and SDR (NeurIPS 2016) under `matlab/`,
+  plus an early Python port under `python/`. Depends on IBM CPLEX. The
+  `matlab/Region-Ranking-SVM-master/` subtree preserves the contents of the
+  old standalone `zijunwei/Region-Ranking-SVM` repo (no longer on GitHub).
+- [`zijunwei/ZFunc`](https://github.com/zijunwei/ZFunc) *(private)* — personal
+  MATLAB helper functions used as a dependency by the MATLAB RRSVM code.
+
 ## TODO
 
 - [ ] **Migrate environment management to [uv](https://docs.astral.sh/uv/)**
